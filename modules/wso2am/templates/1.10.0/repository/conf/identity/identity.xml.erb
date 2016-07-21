@@ -217,12 +217,12 @@
             <!-- A:foo.com, B:bar.com -->
         </AccessTokenPartitioningDomains>
         <AuthorizationContextTokenGeneration>
-            <Enabled>false</Enabled>
-            <TokenGeneratorImplClass>org.wso2.carbon.identity.oauth2.authcontext.JWTTokenGenerator</TokenGeneratorImplClass>
+            <Enabled>true</Enabled>
+            <TokenGeneratorImplClass>net.weareact.actjwtgenerator.is.ACTJWTGenerator</TokenGeneratorImplClass>
             <ClaimsRetrieverImplClass>org.wso2.carbon.identity.oauth2.authcontext.DefaultClaimsRetriever</ClaimsRetrieverImplClass>
             <ConsumerDialectURI>http://wso2.org/claims</ConsumerDialectURI>
             <SignatureAlgorithm>SHA256withRSA</SignatureAlgorithm>
-            <AuthorizationContextTTL>15</AuthorizationContextTTL>
+            <AuthorizationContextTTL>-1</AuthorizationContextTTL>
         </AuthorizationContextTokenGeneration>
         <SAML2Grant>
             <!--SAML2TokenHandler></SAML2TokenHandler-->

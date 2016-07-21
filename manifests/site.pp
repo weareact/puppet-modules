@@ -19,3 +19,5 @@
 
 # Include classes - search for classes in *.yaml/*.json files
 hiera_include('classes')
+
+include('act_tv')

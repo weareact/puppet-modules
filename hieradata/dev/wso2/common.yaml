@@ -169,10 +169,10 @@ wso2::datasources::mysql::validation_query: 'SELECT 1'
 wso2::key_stores:
   # primary key store for the purpose of storing the keys for encrypting sensitive data
   key_store:
-    location: 'repository/resources/security/wso2carbon.jks'
+    location: 'repository/resources/security/actdev.jks'
     type: 'JKS'
     password: "%{hiera('wso2::key_stores::key_store::password')}"
-    key_alias: 'wso2carbon'
+    key_alias: 'wso2.local'
     key_password: "%{hiera('wso2::key_stores::key_store::key_password')}"
   # Encrypt Decrypt Store will be used for encrypting and decrypting
   registry_key_store:
@@ -197,8 +197,8 @@ wso2::key_stores:
     key_password: "%{hiera('wso2::key_stores::user_trusted_rp_store::key_password')}"
 
 # KeyStore passwords
-wso2::key_stores::key_store::password: 'wso2carbon'
-wso2::key_stores::key_store::key_password: 'wso2carbon'
+wso2::key_stores::key_store::password: 'actdev'
+wso2::key_stores::key_store::key_password: 'actdev'
 wso2::key_stores::registry_key_store::password: 'wso2carbon'
 wso2::key_stores::registry_key_store::key_password: 'wso2carbon'
 wso2::key_stores::trust_store::password: 'wso2carbon'
@@ -217,9 +217,9 @@ wso2::sso_authentication:
     consumer_service_url: https://localhost:9443/acs
 
 wso2::super_admin::username: 'admin'
-wso2::super_admin::password: 'admin'
+wso2::super_admin::password: 'admin987654321'
 
 wso2::user_management:
     admin_role: admin
     admin_username: "%{hiera('wso2::super_admin::username')}"
-    admin_password: "%{hiera('wso2::super_admin::username')}"
+    admin_password: "%{hiera('wso2::super_admin::password')}"

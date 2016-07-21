@@ -45,4 +45,5 @@ class wso2am inherits wso2base {
     enable_secure_vault => $wso2base::enable_secure_vault,
     key_store_password  => $wso2base::key_store_password
   }
+
 }
