@@ -21,7 +21,7 @@ wso2::apim_keymanager:
 # Therefore, admin service port should point to corresponding Mesos service target port
   port: 10205
   username: "%{hiera('wso2::super_admin::username')}"
-  password: "%{hiera('wso2::super_admin::username')}"
+  password: "%{hiera('wso2::super_admin::password')}"
 
 wso2::apim_gateway:
   host: marathon-lb.marathon.mesos
@@ -34,7 +34,7 @@ wso2::apim_gateway:
   api_token_revoke_endpoint_port: 10214
   secure_api_token_revoke_endpoint_port: 10215
   username: "%{hiera('wso2::super_admin::username')}"
-  password: "%{hiera('wso2::super_admin::username')}"
+  password: "%{hiera('wso2::super_admin::password')}"
 
 # Clustering
 wso2::clustering:
@@ -44,7 +44,7 @@ wso2::clustering:
     marathon_applications: wso2am-gateway-manager,wso2am-gateway-worker
 #    enable_marathon_basic_auth: true
 #    marathon_username: username
-#    marathon_username: password
+#    marathon_password: password
 
 wso2::dep_sync:
   enabled: false

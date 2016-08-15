@@ -19,7 +19,7 @@ wso2::apim_keymanager:
   host: marathon-lb.marathon.mesos
   port: 10205
   username: "%{hiera('wso2::super_admin::username')}"
-  password: "%{hiera('wso2::super_admin::username')}"
+  password: "%{hiera('wso2::super_admin::password')}"
 
 wso2::apim_gateway:
   host: marathon-lb.marathon.mesos
@@ -39,7 +39,7 @@ wso2::apim_gateway:
   # api_token_revoke_endpoint_port: 10214
   # secure_api_token_revoke_endpoint_port: 10215
   username: "%{hiera('wso2::super_admin::username')}"
-  password: "%{hiera('wso2::super_admin::username')}"
+  password: "%{hiera('wso2::super_admin::password')}"
 
 wso2::apim_store:
   host: marathon-lb.marathon.mesos
@@ -60,7 +60,7 @@ wso2::clustering:
     marathon_applications: wso2am-api-publisher,wso2am-api-store
 #    enable_marathon_basic_auth: true
 #    marathon_username: username
-#    marathon_username: password
+#    marathon_password: password
 
 
 # In Mesos proxy ports need to be configured to match with node ports.
@@ -84,3 +84,11 @@ wso2::registry_mounts:
     read_only: false
     registry_root: /
     enable_cache: true
+
+# SSO Configuration
+wso2::sso_authentication:
+  enabled: false
+  login_page: /carbon/admin/login.jsp
+  service_provider_id: wso2am-store
+  sso_service_url: https://marathon-lb.marathon.mesos:10113/samlsso
+  consumer_service_url: https://marathon-lb.marathon.mesos:10209/acs

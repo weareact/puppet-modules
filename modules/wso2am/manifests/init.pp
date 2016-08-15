@@ -21,8 +21,21 @@ class wso2am inherits wso2base {
   $apim_keymanager    = hiera('wso2::apim_keymanager')
   $apim_publisher     = hiera('wso2::apim_publisher')
   $apim_store         = hiera('wso2::apim_store')
+  $apim_traffic_manager    = hiera('wso2::apim_traffic_manager', { })
   $is_datasource      = hiera('wso2::is_datasource')
   $am_datasource     = hiera('wso2::am_datasource')
+  $enable_advance_throttling = hiera('wso2::enable_advance_throttling', { })
+  $key_validator_client_type = hiera('wso2::key_validator_client_type', { })
+  $enable_thrift_server = hiera('wso2::enable_thrift_server', { })
+  $thrift_server_host = hiera('wso2::thrift_server_host', { })
+  $key_store = hiera('wso2::key_store', { })
+  $trust_store = hiera('wso2::trust_store', { })
+  $enable_data_publisher = hiera('wso2::enable_data_publisher', { })
+  $enable_block_condition = hiera('wso2::enable_block_condition', { })
+  $enable_jms_connection_details = hiera('wso2::enable_jms_connection_details', { })
+  $apim_gateway_disable_jms_event_parameters = hiera('wso2::apim_gateway_disable_jms_event_parameters', "false")
+  $enable_traffic_manager_specific_axis2_configurations = hiera('wso2::enable_traffic_manager_specific_axis2_configurations', "false")
+  $enable_traffic_manager_specific_registry_configurations = hiera('wso2::enable_traffic_manager_specific_registry_configurations', "false")
 
   wso2base::server { $wso2base::carbon_home:
     maintenance_mode    => $wso2base::maintenance_mode,

@@ -15,6 +15,10 @@
 classes:
   - wso2greg_pubstore
 
+wso2::pack_filename: "wso2greg-%{::product_version}.zip"
+wso2::pack_extracted_dir: "wso2greg-%{::product_version}"
+wso2::carbon_home_symlink: "/mnt/wso2greg-%{::product_version}"
+
 wso2::datasources::common::bps_default_auto_commit: 'true'
 
 wso2::service_name: wso2greg_pubstore
@@ -28,7 +32,7 @@ wso2::clustering:
 #  mesos:
 #    enable_marathon_basic_auth: true
 #    marathon_username: username
-#    marathon_username: password
+#    marathon_password: password
 
 wso2::template_list:
   - repository/conf/identity.xml
@@ -44,6 +48,14 @@ wso2::template_list:
 #  - repository/conf/security/cipher-tool.properties
 #  - bin/ciphertool.sh
 
+# SSO Configuration
+wso2::sso_authentication:
+  enabled: false
+  login_page: /carbon/admin/login.jsp
+  service_provider_id: wso2greg-pubstore
+  sso_service_url: https://marathon-lb.marathon.mesos:10113/samlsso
+  consumer_service_url: https://marathon-lb.marathon.mesos:10134/acs
+
 wso2::apim_gateway:
   host: am.dev.wso2.org
   port: 9443
@@ -53,13 +65,13 @@ wso2::apim_gateway:
   api_token_revoke_endpoint_port: 8280
   secure_api_token_revoke_endpoint_port: 8243
   username: "%{hiera('wso2::super_admin::username')}"
-  password: "%{hiera('wso2::super_admin::username')}"
+  password: "%{hiera('wso2::super_admin::password')}"
 
 wso2::apim_keymanager:
   host: am.dev.wso2.org
   port: 9443
   username: "%{hiera('wso2::super_admin::username')}"
-  password: "%{hiera('wso2::super_admin::username')}"
+  password: "%{hiera('wso2::super_admin::password')}"
 
 wso2::enableThriftServer: false
 
@@ -223,17 +235,17 @@ wso2::registry_mounts:
 #  user_manager_admin_password:
 #    secret_alias: UserManager.AdminUser.Password
 #    secret_alias_value: repository/conf/user-mgt.xml//UserManager/Realm/Configuration/AdminUser/Password,false
-#    password: "%{hiera('wso2::super_admin::username')}"
+#    password: "%{hiera('wso2::super_admin::password')}"
 #
 #  api_gateway_password:
 #    secret_alias: APIGateway.Password
 #    secret_alias_value: repository/conf/api-manager.xml//APIManager/APIGateway/Environments/Environment/Password,false
-#    password: "%{hiera('wso2::super_admin::username')}"
+#    password: "%{hiera('wso2::super_admin::password')}"
 #
 #  api_key_validator_password:
 #    secret_alias: APIKeyValidator.Password
 #    secret_alias_value: repository/conf/api-manager.xml//APIManager/APIKeyValidator/Password,false
-#    password: "%{hiera('wso2::super_admin::username')}"
+#    password: "%{hiera('wso2::super_admin::password')}"
 #
 #  wso2_carbon_db_password:
 #    secret_alias: Datasources.WSO2_CARBON_DB.Configuration.Password

@@ -43,7 +43,7 @@ wso2::clustering:
 #  mesos:
 #    enable_marathon_basic_auth: true
 #    marathon_username: username
-#    marathon_username: password
+#    marathon_password: password
 
 wso2::registry_mounts:
   wso2_config_db:
@@ -78,6 +78,14 @@ wso2::ha_deployment:
   presentation:
     hostName: 0.0.0.0
     port: 11002
+
+# SSO Configuration
+wso2::sso_authentication:
+  enabled: false
+  login_page: /carbon/admin/login.jsp
+  service_provider_id: wso2cep
+  sso_service_url: https://marathon-lb.marathon.mesos:10113/samlsso
+  consumer_service_url: https://marathon-lb.marathon.mesos:10053/acs
 
 wso2::master_datasources:
   wso2_config_db:
@@ -163,7 +171,7 @@ wso2::data_bridge:
 #  user_manager_admin_password:
 #    secret_alias: UserManager.AdminUser.Password
 #    secret_alias_value: repository/conf/user-mgt.xml//UserManager/Realm/Configuration/AdminUser/Password,false
-#    password: "%{hiera('wso2::super_admin::username')}"
+#    password: "%{hiera('wso2::super_admin::password')}"
 #
 #  wso2_carbon_db_password:
 #    secret_alias: Datasources.WSO2_CARBON_DB.Configuration.Password

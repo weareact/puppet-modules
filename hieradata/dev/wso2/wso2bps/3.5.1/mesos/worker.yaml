@@ -27,10 +27,10 @@ wso2::clustering:
   enabled: true
   membership_scheme: mesos
   mesos:
-      marathon_applications: wso2bps-manager,wso2bps-worker
+    marathon_applications: wso2bps-manager,wso2bps-worker
 #    enable_marathon_basic_auth: true
 #    marathon_username: username
-#    marathon_username: password
+#    marathon_password: password
 
 # Registry mounts
 wso2::registry_mounts:
