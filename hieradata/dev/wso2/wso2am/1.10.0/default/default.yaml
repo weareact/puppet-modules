@@ -37,33 +37,33 @@ wso2::template_list:
 #  - "repository/components/lib/%{hiera('wso2::datasources::mysql::connector_jar')}"
 
 wso2::service_name: wso2am
-wso2::hostname: wso2am.local
-wso2::mgt_hostname: wso2am.local
+wso2::hostname: api01.stg.gb3.weareact.net
+wso2::mgt_hostname: api01.stg.gb3.weareact.net
 
 wso2::apim_gateway:
-  host: wso2am.local
-  port: 9443
-  api_endpoint_host: wso2am.local
-  api_endpoint_port: 8280
-  secure_api_endpoint_port: 8243
-  api_token_revoke_endpoint_port: 8280
-  secure_api_token_revoke_endpoint_port: 8243
+  host: api01.stg.gb3.weareact.net
+  port: 19443
+  api_endpoint_host: api01.stg.gb3.weareact.net
+  api_endpoint_port: 18280
+  secure_api_endpoint_port: 18243
+  api_token_revoke_endpoint_port: 18280
+  secure_api_token_revoke_endpoint_port: 18243
   username: "%{hiera('wso2::super_admin::username')}"
   password: "%{hiera('wso2::super_admin::username')}"
 
 wso2::apim_keymanager:
-  host: wso2am.local
-  port: 9443
+  host: api01.stg.gb3.weareact.net
+  port: 19443
   username: "%{hiera('wso2::super_admin::username')}"
   password: "%{hiera('wso2::super_admin::username')}"
 
 wso2::apim_store:
-  host: wso2am.local
-  port: 9443
+  host: api01.stg.gb3.weareact.net
+  port: 19443
 
 wso2::apim_publisher:
-  host: wso2am.local
-  port: 9443
+  host: api01.stg.gb3.weareact.net
+  port: 19443
 
 #wso2::registry_mounts:
 # wso2_config_db:

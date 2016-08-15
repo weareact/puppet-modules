@@ -31,7 +31,7 @@
 <%- if @ports['proxyPort'] and @ports['proxyPort']['http'] -%>
                    proxyPort="<%= @ports['proxyPort']['http'] %>"
 <%- end -%>
-                   redirectPort="9443"
+                   redirectPort="19443"
                    bindOnInit="false"
                    maxHttpHeaderSize="8192"
                    acceptorThreadCount="2"
@@ -55,7 +55,7 @@
         Added sslEnabledProtocols="TLSv1,TLSv1.1,TLSv1.2" for poodle vulnerability fix
         -->
         <Connector protocol="org.apache.coyote.http11.Http11NioProtocol"
-                   port="9443"
+                   port="19443"
 <%- if @ports['proxyPort'] and @ports['proxyPort']['https'] -%>
                    proxyPort="<%= @ports['proxyPort']['https'] %>"
 <%- end -%>
