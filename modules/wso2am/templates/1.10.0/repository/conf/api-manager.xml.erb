@@ -111,7 +111,7 @@
 		jwt token, he needs to enable this parameter.
 		The DefaultClaimsRetriever class adds user claims from the default carbon user store.
 	-->
-	<!--ClaimsRetrieverImplClass>org.wso2.carbon.apimgt.impl.token.DefaultClaimsRetriever</ClaimsRetrieverImplClass-->
+	<ClaimsRetrieverImplClass>org.wso2.carbon.apimgt.impl.token.DefaultClaimsRetriever</ClaimsRetrieverImplClass>
 
 	<!--
 		The dialectURI under which the claimURIs that need to be appended to the
@@ -119,7 +119,7 @@
 		same value is used in the keys for appending the default properties to the
 		JWT.
 	-->
-    	<!--ConsumerDialectURI>http://wso2.org/claims</ConsumerDialectURI-->
+    	<ConsumerDialectURI>http://wso2.org/claims</ConsumerDialectURI>
 
     	<!--
 		Signature algorithm. Accepts "SHA256withRSA" or "NONE". To disable signing explicitly specify "NONE".
@@ -129,13 +129,13 @@
     <!--
 		Enable/Disable JWT generation. Default is false.
 	-->
-	<!--EnableTokenGeneration>false</EnableTokenGeneration-->
+	<EnableTokenGeneration>true</EnableTokenGeneration>
 
         <!--
             This parameter specifies which implementation should be used for generating the Token. JWTGenerator is the
 	    default implementation provided.
 	 -->
-	<TokenGeneratorImpl>org.wso2.carbon.apimgt.impl.token.JWTGenerator</TokenGeneratorImpl>
+	<TokenGeneratorImpl>net.weareact.actjwtgenerator.apimgt.ACTJWTGenerator</TokenGeneratorImpl>
 
          <!--
             This parameter specifies which implementation should be used for generating the Token. For URL safe JWT
@@ -394,7 +394,7 @@
         <%- if @clustering['enabled'] -%>
           <KeyValidatorClientType>WSClient</KeyValidatorClientType>
       <%- else -%>
-          <KeyValidatorClientType>ThriftClient</KeyValidatorClientType>
+          <KeyValidatorClientType>WSClient</KeyValidatorClientType>
       <%- end -%>
           <ThriftClientPort>10397</ThriftClientPort>
           <ThriftClientConnectionTimeOut>10000</ThriftClientConnectionTimeOut>
